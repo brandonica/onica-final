@@ -32,6 +32,9 @@ The OnicaELBSG security group sets this rule. It just adds an ingress rule for p
 5) Security group allowing http traffic only from the load balancer to the auto scaling group
 
 This was achieved in the following manner:
+I'm having some trouble on this. Below is the process that I thought would get it correct but I'm having real difficulty getting the SourceSecurityGroupID to link the ingress rule to the ELB. I'll have to dig into this a bit more. 
+
+
 The OnicaASGSG sets this rule. However, due to the lack of public IPs, the auto scaling group instances are not reachable from outside the network. However, to meet this requirement I created a ASG security group that explicitly created a rule using the SourceSecurityGroupId of the ELB:
 
 `SourceSecurityGroupId" : { "Ref" :  "OnicaELBASB" }`
@@ -68,6 +71,8 @@ This was accomplished by:
 Pretty much goes with the above. You'll need to create teh keys via console or cli. Same key works across the entire vpc. 
 
 Improvements:
+
+Get that security group ingress policy figured out. I'm not certain how best to reference the groupid that I need. Maybe there is a getatt that'll get it done?
 
 File management via aws-cfn-bootstrap and the helper scripts. I could not get the metadata to read correctly throughout the entire process. I know the bootstrap process starts, and I have cfn-init when the instance boots up, but its not installing packages listed in the packages section of the metadata. My package install is clunky and I feel like cfn scripts are closer to best practice. I'll need to hammer that out soon.
 
