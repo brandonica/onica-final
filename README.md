@@ -55,10 +55,10 @@ I kept this simple and created a bash script via the UserData parameter of the A
 Starts the apache service:
 `service httpd start`
 Creates a simple webpage using echo + a curl to http://169.254.169.254/latest/meta-data/hostname
-```             "touch /var/www/html/index.html\n",
+`             "touch /var/www/html/index.html\n",
              "echo '<h2>Welcome to instance: </h2><p>' > /var/www/html/index.html\n",
              "curl http://169.254.169.254/latest/meta-data/hostname >> /var/www/html/index.html\n",
-             "echo '</p>' >> /var/www/html/index.html\n" ```
+             "echo '</p>' >> /var/www/html/index.html\n" `
  
  8) All AWS resources must be created using CloudFormation or Teraform
  
