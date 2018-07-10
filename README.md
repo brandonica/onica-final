@@ -32,12 +32,16 @@ The OnicaELBSG security group sets this rule. It just adds an ingress rule for p
 5) Security group allowing http traffic only from the load balancer to the auto scaling group
 
 This was achieved in the following manner:
-I'm having some trouble on this. Below is the process that I thought would get it correct but I'm having real difficulty getting the SourceSecurityGroupID to link the ingress rule to the ELB. I'll have to dig into this a bit more. 
-
 
 The OnicaASGSG sets this rule. However, due to the lack of public IPs, the auto scaling group instances are not reachable from outside the network. However, to meet this requirement I created a ASG security group that explicitly created a rule using the SourceSecurityGroupId of the ELB:
 
 `SourceSecurityGroupId" : { "Ref" :  "OnicaELBASB" }`
+
+I also created a rule that only allows SSH traffic from the bastion server:
+
+`"SourceSecurityGroupId" : { "Ref" : "OnicaBastionSG"} }`
+
+Finally, I needed to add a `DependsOn : "OnicaELBSG"` line to ensure that the ASGSG doesn't start provisioning until the elastic load balancer is all set up.
 
 6) Remote management ports such as ssh and rdp must not be open to the world.
 
