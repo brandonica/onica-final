@@ -34,7 +34,7 @@ The OnicaELBSG security group sets this rule. It just adds an ingress rule for p
 This was achieved in the following manner:
 The OnicaASGSG sets this rule. However, due to the lack of public IPs, the auto scaling group instances are not reachable from outside the network. However, to meet this requirement I created a ASG security group that explicitly created a rule using the SourceSecurityGroupName of the ELB:
 
-`"SourceSecurityGroupName" : { "Fn::GetAtt" : [ "OnicaELBASB" , "SourceSecurityGroup.GroupName" ] }`
+`SourceSecurityGroupId" : { "Ref" :  "OnicaELBASB" }`
 
 6) Remote management ports such as ssh and rdp must not be open to the world.
 
