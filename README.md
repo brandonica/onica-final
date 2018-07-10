@@ -76,8 +76,6 @@ Pretty much goes with the above. You'll need to create teh keys via console or c
 
 Improvements:
 
-Get that security group ingress policy figured out. I'm not certain how best to reference the groupid that I need. Maybe there is a getatt that'll get it done?
-
 File management via aws-cfn-bootstrap and the helper scripts. I could not get the metadata to read correctly throughout the entire process. I know the bootstrap process starts, and I have cfn-init when the instance boots up, but its not installing packages listed in the packages section of the metadata. My package install is clunky and I feel like cfn scripts are closer to best practice. I'll need to hammer that out soon.
 
 route1 takes a long time to create. I have a dependency on the nat gateway which holds it up. I don't know what takes that NAT gateway so long to spin up though. 
