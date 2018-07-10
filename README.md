@@ -32,7 +32,7 @@ The OnicaELBSG security group sets this rule. It just adds an ingress rule for p
 5) Security group allowing http traffic only from the load balancer to the auto scaling group
 
 This was achieved in the following manner:
-The OnicaASGSG sets this rule. However, due to the lack of public IPs, the auto scaling group instances are not reachable from outside the network. However, to meet this requirement I created a ASG security group that explicitly created a rule using the SourceSecurityGroupName of the ELB:
+The OnicaASGSG sets this rule. However, due to the lack of public IPs, the auto scaling group instances are not reachable from outside the network. However, to meet this requirement I created a ASG security group that explicitly created a rule using the SourceSecurityGroupId of the ELB:
 
 `SourceSecurityGroupId" : { "Ref" :  "OnicaELBASB" }`
 
