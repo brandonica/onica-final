@@ -79,3 +79,5 @@ File management via aws-cfn-bootstrap and the helper scripts. I could not get th
 route1 takes a long time to create. I have a dependency on the nat gateway which holds it up. I don't know what takes that NAT gateway so long to spin up though. 
 
 It'd be nice to make a slimmer AMI. These instances take a while to spin up and all I really want on them is apache.
+
+The output should have the load balancer link
