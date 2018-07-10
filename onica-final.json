@@ -550,6 +550,7 @@
     },
 	"OnicaASGSG": {
       "Type": "AWS::EC2::SecurityGroup",
+      "DependsOn" : "OnicaELBSG",
       "Properties": {
         "GroupDescription": "Open port 80",
         "VpcId": {
@@ -559,12 +560,12 @@
 	         "IpProtocol" : "tcp",
 	         "FromPort" : "80",
 	         "ToPort" : "80",
-	         "CidrIp" : "0.0.0.0/0"
+	         "SourceSecurityGroupId" : { "Ref" : "OnicaELBSG" }
 	      },
 	       {"IpProtocol" : "tcp",
 	         "FromPort" : "22",
 	         "ToPort" : "22",
-	         "CidrIp" : "0.0.0.0/0" }
+	         "SourceSecurityGroupId" : { "Ref" : "OnicaBastionSG"} }
 	         ]
       }
     },
