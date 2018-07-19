@@ -546,7 +546,7 @@
              "echo '<h2>Welcome to instance: </h2><p>' > /var/www/html/index.html\n",
              "curl http://169.254.169.254/latest/meta-data/hostname >> /var/www/html/index.html\n",
              "echo '</p>' >> /var/www/html/index.html\n",
-             "stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 120s"
+             "stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 240s"
         ]]}}
       }
     },
