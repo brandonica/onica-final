@@ -540,6 +540,7 @@
         "UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
              "#!/bin/bash -xe\n",
              "yum install -y httpd\n",
+             "yum install -y stress\n",
              "service httpd start\n",
              "touch /var/www/html/index.html\n",
              "echo '<h2>Welcome to instance: </h2><p>' > /var/www/html/index.html\n",
