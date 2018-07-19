@@ -610,7 +610,7 @@
         "MetricName": "CPUUtilization",
         "Namespace": "AWS/EC2",
         "Statistic": "Average",
-        "Period": "30",
+        "Period": "120",
         "EvaluationPeriods": "2",
         "Threshold": "10",
         "AlarmActions": [ { "Ref": "WebServerScaleUpPolicy" } ],
@@ -630,7 +630,7 @@
         "MetricName": "CPUUtilization",
         "Namespace": "AWS/EC2",
         "Statistic": "Average",
-        "Period": "30",
+        "Period": "120",
         "EvaluationPeriods": "2",
         "Threshold": "9",
         "AlarmActions": [ { "Ref": "WebServerScaleDownPolicy" } ],
@@ -643,5 +643,11 @@
         "ComparisonOperator": "LessThanThreshold"
       }
     }
+},
+"Outputs" : {
+  "ELBDNS" : {
+    "Description" : "Returns the DNS link",
+    "Value" : { "Fn::GetAtt" : [ "OnicaELBASB" , "DNSName" ] }
+  }
 }
 }
